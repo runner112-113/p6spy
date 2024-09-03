@@ -21,9 +21,22 @@ import com.p6spy.engine.spy.P6LoadableOptions;
 
 public interface P6OutageLoadableOptions extends P6LoadableOptions, P6OutageOptionsMBean {
 
+  /**
+   * 慢SQL记录标准  默认30s
+   * @return
+   */
   public long getOutageDetectionIntervalMS();
 
+  /**
+   * 设置是否开启慢查询  默认为false
+   * @param outagedetection
+   */
   void setOutageDetection(String outagedetection);
+
+  /**
+   * 设置慢sql的时长
+   * @param outagedetectioninterval
+   */
 
   void setOutageDetectionInterval(String outagedetectioninterval);
 }

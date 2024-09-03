@@ -22,6 +22,11 @@ import com.p6spy.engine.spy.P6Factory;
 import com.p6spy.engine.spy.P6LoadableOptions;
 import com.p6spy.engine.spy.option.P6OptionsRepository;
 
+/**
+ * Outage模块：（P6LoadableOptions）
+ * outagedetection
+ * outagedetectioninterval
+ */
 public class P6OutageFactory implements P6Factory {
 
   @Override

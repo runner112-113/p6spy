@@ -69,10 +69,12 @@ public class P6LogQuery implements P6OptionChangedListener {
     final P6SpyOptions opts = moduleManager.getOptions(P6SpyOptions.class);
     logger = opts.getAppenderInstance();
     if (logger != null) {
+      // FileLogger 需要设置logfile名称  默认spy.log
       if (logger instanceof FileLogger) {
         final String logfile = opts.getLogfile();
         ((FileLogger) logger).setLogfile(logfile);
       }
+      // FormattedLogger 需要设置logmessageformat策略  logMessageFormat
       if (logger instanceof FormattedLogger) {
         final MessageFormattingStrategy strategy = opts.getLogMessageFormatInstance();
         if (strategy != null) {
@@ -146,12 +148,17 @@ public class P6LogQuery implements P6OptionChangedListener {
     }
 
     final P6LogLoadableOptions opts = P6LogOptions.getActiveInstance();
-    
+
+    // 是否有过滤条件
+    // filter = true
+    // include,exclude,sqlexpression,excludecategories,excludecategories,excludebinary
     if (!opts.getFilter()) {
       return true;
     }
 
+    // sqlexpressionPattern
     final Pattern sqlExpressionPattern = opts.getSQLExpressionPattern();
+    // includeExcludePattern
     final Pattern includeExcludePattern = opts.getIncludeExcludePattern();
     
     return (sqlExpressionPattern == null || sqlExpressionPattern.matcher(sql).matches())
@@ -163,7 +170,8 @@ public class P6LogQuery implements P6OptionChangedListener {
     if (null == opts) {
       return CATEGORIES_IMPLICITLY_INCLUDED.contains(category);
     }
-    
+
+    // excludecategoriesSet
     final Set<Category> excludeCategories = opts.getExcludeCategoriesSet();
     
     return logger != null && logger.isCategoryEnabled(category) 

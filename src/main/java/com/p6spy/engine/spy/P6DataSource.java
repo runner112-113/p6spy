@@ -287,12 +287,14 @@ public class P6DataSource implements DataSource, ConnectionPoolDataSource, XADat
     }
     
     final long start = System.nanoTime();
-    
+
+    // 尝试SPI获取JdbcEventListenerFactory，默认DefaultJdbcEventListenerFactory
     if (this.jdbcEventListenerFactory == null) {
       this.jdbcEventListenerFactory = JdbcEventListenerFactoryLoader.load();
     }
 
     final Connection conn;
+    // 获取JdbcEventListener
     final JdbcEventListener jdbcEventListener = this.jdbcEventListenerFactory.createJdbcEventListener();
     final ConnectionInformation connectionInformation = ConnectionInformation.fromDataSource(realDataSource);
     jdbcEventListener.onBeforeGetConnection(connectionInformation);

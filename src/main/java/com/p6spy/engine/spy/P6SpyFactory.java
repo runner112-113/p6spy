@@ -20,6 +20,9 @@ package com.p6spy.engine.spy;
 import com.p6spy.engine.event.JdbcEventListener;
 import com.p6spy.engine.spy.option.P6OptionsRepository;
 
+/**
+ * p6spy的通用模块
+ */
 public class P6SpyFactory implements P6Factory {
 
   @Override

@@ -23,6 +23,10 @@ import java.util.Map.Entry;
 
 import com.p6spy.engine.spy.P6ModuleManager;
 
+/**
+ * 用于获取操作系统的环境变量。
+ * 环境变量是在操作系统级别设置的键值对，用于存储系统配置和其他信息。
+ */
 public class EnvironmentVariables implements P6OptionsSource {
 
   @Override

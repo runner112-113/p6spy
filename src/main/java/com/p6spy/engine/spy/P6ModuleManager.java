@@ -115,10 +115,12 @@ public class P6ModuleManager {
     registerOptionChangedListener(new P6LogQuery());
     
     // hard coded - core module init - as it holds initial config
+    // 默认注册P6SpyFactory module
     final P6SpyLoadableOptions spyOptions = (P6SpyLoadableOptions) registerModule(new P6SpyFactory());
+    // load真实的驱动
     loadDriversExplicitly(spyOptions);
 
-    // configured modules init
+    // configured modules init  初始化module
     final Set<P6Factory> moduleFactories = spyOptions.getModuleFactories();
     if (null != moduleFactories) {
 	    for (P6Factory factory : spyOptions.getModuleFactories()) {
@@ -143,6 +145,7 @@ public class P6ModuleManager {
   	MBeanRegistrationException, NotCompliantMBeanException, MalformedObjectNameException*/ {
     
 	  // re-register is not supported - skip silently
+    // 不支持重复注册,比如P6spyFactory默认已经注册过了
 	  for (P6Factory registeredFactory : factories) {
 		  if (registeredFactory.getClass().equals(factory.getClass())) {
 			  return null;

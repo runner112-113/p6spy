@@ -25,8 +25,19 @@ import com.p6spy.engine.spy.option.P6OptionsRepository;
 import java.util.Iterator;
 import java.util.ServiceLoader;
 
+/**
+ * 日志模块
+ * sqlexpression
+ * executionThreshold
+ * excludecategories
+ * filter
+ * include
+ * exclude
+ * excludebinary
+ */
 public class P6LogFactory implements P6Factory {
 
+  // SPI注入
   private static ServiceLoader<LoggingEventListener> customLoggingEventListener = ServiceLoader
     .load(LoggingEventListener.class, P6LogFactory.class.getClassLoader());
 

@@ -28,6 +28,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 组合的listener
+ */
 public class CompoundJdbcEventListener extends JdbcEventListener {
   private final List<JdbcEventListener> eventListeners;
 

@@ -25,6 +25,9 @@ import java.util.Properties;
 
 import com.p6spy.engine.spy.P6ModuleManager;
 
+/**
+ * 当前 Java 虚拟机的系统属性
+ */
 public class SystemProperties implements P6OptionsSource {
 
   public static final String P6SPY_PREFIX = "p6spy.config.";
